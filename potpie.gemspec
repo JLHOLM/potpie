@@ -1,4 +1,3 @@
-
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "potpie/version"
@@ -7,11 +6,12 @@ Gem::Specification.new do |spec|
   spec.name          = "potpie"
   spec.version       = Potpie::VERSION
   spec.authors       = ["Justin Holm"]
-  spec.email         = ["jholm@covermymeds.com"]
+  spec.email         = ["jlholmz@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Potpie is a single user auth system that utilizes OTP (One Time Password) as the sign-on mechanism.
+                          Compatible with the Google Authenticator app for Android and iPhone.}
+  spec.description   = %q{Personal One Time Password Identification Entrace (Potpie).}
+  spec.homepage      = "https://github.com/jlholm/potpie"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rotp"
 end

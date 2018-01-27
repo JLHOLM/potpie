@@ -34,6 +34,21 @@ Potpie.random_base32
  => "wil3usmyllhhrgvm"
 ```
 
+#### Generate QR Code or Provisioned URI
+```ruby
+Potpie.generate.provisioned_uri
+=> "otpauth://totp/test@email.com?secret=wil3usmyllhhrgvm"
+
+# TODO
+# Potpie.generate.qr_code
+```
+#### Utility Methods
+Return the current time-based one time password value 
+```ruby
+Potpie.now
+=> "710571"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

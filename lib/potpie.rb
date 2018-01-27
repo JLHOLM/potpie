@@ -1,6 +1,7 @@
 require 'potpie/configuration'
 require 'potpie/generator'
 require 'potpie/version'
+require 'openssl'
 require 'rotp'
 
 module Potpie

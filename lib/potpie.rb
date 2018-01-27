@@ -25,4 +25,10 @@ module Potpie
   def self.configure
     yield configuration
   end
+
+  # Generate a random Base32 string
+  # @return random Base32 string
+  def self.random_base32
+    ROTP::Base32.random_base32
+  end
 end

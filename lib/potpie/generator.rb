@@ -3,11 +3,11 @@ module Potpie
     # Config params for Potpie.configuration
     # Base32_secret and user_email should be
     # provided for a code to be generated.
-    attr_reader :config
+    attr_reader :config_params
 
-    def initialize(config)
-      @base32_secret = config.base32_secret
-      @user_email = config.user_email
+    def initialize(config_params)
+      @base32_secret = config_params.base32_secret
+      @user_email = config_params.user_email
     end
 
     # Generates a scannable QR code.

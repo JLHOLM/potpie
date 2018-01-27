@@ -1,4 +1,4 @@
-# Potpie
+<img src="https://user-images.githubusercontent.com/8730447/35465962-e09b6fdc-02cd-11e8-88f7-684969565f3c.png"/>
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/potpie`. To experiment with that code, run `bin/console` for an interactive prompt.
 

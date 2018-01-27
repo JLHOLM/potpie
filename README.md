@@ -1,8 +1,6 @@
 <img src="https://user-images.githubusercontent.com/8730447/35465962-e09b6fdc-02cd-11e8-88f7-684969565f3c.png"/>
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/potpie`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A single user identification entrance (auth). Potpie utilizes one time passwords (OTP) which are compatible with Google Authenticator on both Android and iPhone. It's time to ditch that HTTP Basic authentication for an even easier method.
 
 ## Installation
 
@@ -14,7 +12,7 @@ gem 'potpie'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -22,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+#### Configuration
+Create a new file titled `potpie.rb` within `config/initializers/`. Set both `base32_secret` and `user_email` to your own unique values. We HIGHLY recommend you store these values in Environment variables.
+```ruby
+Potpie.configure do |config|
+  config.base32_secret = ENV["POTPIE_CONFIG_BASE32_SECRET"]
+  config.user_email = ENV["POTPIE_CONFIG_USER_EMAIL"]
+end
+```
+Upon installation of Potpie, feel free to utilize our builtin Base32 string generator within the rails console to provide a unique Base32 string. However, creating your own is okay too (16 chars in length).
+```
+Potpie.random_base32
+ => "wil3usmyllhhrgvm"
+```
 
 ## Development
 
@@ -32,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/potpie.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jlholm/potpie.
 
 ## License
 

@@ -1,4 +1,5 @@
 require 'potpie/configuration'
+require 'potpie/generator'
 require 'potpie/version'
 require 'rotp'
 
@@ -20,10 +21,26 @@ module Potpie
   # ```
   # Potpie.configure do |config|
   #   config.base32_secret = "base32secret3232"
+  #   ...
   # end
   # ```
   def self.configure
     yield configuration
+  end
+
+  # Generate key for Google Authenticator
+  # @return [Potpie::Generator] Potpie's key for Google Authenticator
+  #
+  # ```
+  # Potpie.generate.provisioned_uri
+  # Potpie.generate.qr_code
+  # ```
+  def self.generate
+    if self.configuration.user_email.nil?
+      raise ArgumentError.new "user_email cannot be nil"
+    end
+
+    Generator.new self.configuration
   end
 
   # Generate a random Base32 string

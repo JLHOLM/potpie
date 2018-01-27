@@ -28,4 +28,14 @@ RSpec.describe Potpie do
       expect(Potpie.configuration.user_email).to eq(potpie_config.fetch(:user_email))
     end
   end
+
+  describe "#random_base32" do
+    it "is not nil" do
+      expect(Potpie.random_base32).not_to be nil
+    end
+
+    it "returns a random 16 character string" do
+      expect(Potpie.random_base32.length).to eq(16)
+    end
+  end
 end

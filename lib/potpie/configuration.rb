@@ -11,7 +11,7 @@ module Potpie
     attr_accessor :user_email
 
     def initialize
-      @base32_secret = ROTP::Base32.random_base32
+      @base32_secret = Potpie.random_base32
       @user_email    = nil
     end
   end

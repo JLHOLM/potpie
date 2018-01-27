@@ -40,11 +40,21 @@ module Potpie
       raise ArgumentError.new "user_email cannot be nil"
     end
 
-    Generator.new self.configuration
+    @generator ||= Generator.new self.configuration
+  end
+
+  # Return current one time password value, 30sec interval between change
+  # @return [Potpie::Generator] Potpie's current otp value.
+  #
+  # ```
+  # Potpie.now
+  # ```
+  def self.now
+    @generator.now
   end
 
   # Generate a random Base32 string
-  # @return random Base32 string
+  # @return [Potpie.random_base32] random Base32 string
   def self.random_base32
     ROTP::Base32.random_base32
   end

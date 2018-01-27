@@ -1,18 +1,18 @@
 require 'spec_helper'
 
 RSpec.describe Potpie do
-  let!(:potpie_config) do
-    {
-      base32_secret: "base32secret3232",
-      user_email:    "test@email.com"
-    }
-  end
-
   it "has a version number" do
     expect(Potpie::VERSION).not_to be nil
   end
 
   describe "#configuration" do
+    let!(:potpie_config) do
+      {
+        base32_secret: "base32secret3232",
+        user_email:    "test@email.com"
+      }
+    end
+
     before do
       Potpie.configure do |config|
         config.base32_secret = potpie_config.fetch(:base32_secret)
@@ -30,6 +30,13 @@ RSpec.describe Potpie do
   end
 
   describe "#generate" do
+    let!(:potpie_config) do
+      {
+        base32_secret: "base32secret3232",
+        user_email:    "test@email.com"
+      }
+    end
+
     before do
       Potpie.configure do |config|
         config.base32_secret = potpie_config.fetch(:base32_secret)
@@ -44,21 +51,15 @@ RSpec.describe Potpie do
     end
 
     describe "#provisioned_uri" do
-      context "user_email is present" do
-        it "returns a provisioned uri" do
-          expect(Potpie.generate.provisioned_uri).to_not be nil
-        end
+      it "returns a provisioned uri" do
+        expect(Potpie.generate.provisioned_uri).to_not be nil
       end
+    end
+  end
 
-      context "user_email is not present" do
-        before do
-          Potpie.configuration.user_email = nil
-        end
-
-        it "returns an error" do
-          expect{ Potpie.generate.provisioned_uri }.to raise_error(ArgumentError)
-        end
-      end
+  describe "#now" do
+    it "returns the current otp value" do
+      expect(Potpie.now).to_not be nil
     end
   end
 
